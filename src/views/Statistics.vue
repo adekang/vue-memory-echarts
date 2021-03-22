@@ -1,8 +1,8 @@
 <template>
   <div>
-    123.vue
-    <hr/>
-    <Nav/>
+    <Layout>
+      <p>123</p>
+    </Layout>
   </div>
 </template>
 
