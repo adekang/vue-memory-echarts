@@ -1,23 +1,22 @@
 <template>
   <div class="nav">
     <router-link to="/money">
-      <svg>
-        <use xlink:href="#pet"/>
-      </svg>
+      <Icon name="tag"/>
       记账
     </router-link>
     |
-    <router-link to="/labels">标签</router-link>
+    <router-link to="/labels">
+      <Icon name="pet"/>
+      标签</router-link>
     |
-    <router-link to="/statistics">统计</router-link>
+    <router-link to="/statistics">
+      <Icon name="chart"/>
+      统计</router-link>
     |
   </div>
 </template>
 
 <script lang="ts">
-import x from '@/assets/icons/pet.svg';
-
-console.log(x);
 export default {
   name: 'Nav'
 };
