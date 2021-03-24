@@ -64,6 +64,7 @@ export default class NumberPad extends Vue {
 
   OK() {
     alert("记账成功")
+     this.$emit('update:value',this.output)
   }
 }
 </script>
