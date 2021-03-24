@@ -1,15 +1,28 @@
 <template>
   <div>
+    {{value}}
     <label class="notes">
       <span class="name">备注</span>
-      <input type="text" placeholder="请输入...">
+      <input type="text"
+             :value="value"
+             @input="onInput"
+             placeholder="请输入...">
     </label>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Notes'
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Notes extends Vue {
+  value = '';
+
+  onInput(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+    this.value = input.value;
+  }
 }
 </script>
 
