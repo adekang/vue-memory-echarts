@@ -11,27 +11,23 @@
 
 </template>
 
-<script>
-export default {
-  name: 'Types',
-  props:['xxx'],
-  data() {
-    return {
-      type: '-' // - 支出 + 收入
+<script lang="ts">
+import Vue from 'vue';
+// 提示这是一个组件
+import {Component} from 'vue-property-decorator';
+
+@Component
+export default class Types extends Vue {
+
+  type = '-';  // - 支出 + 收入
+  selectType(type: string) {
+    if (type !== '-' && type !== '+') {
+      throw  new Error('type is unknown');
     }
-  },
-  mounted() {
-    console.log()
-  },
-  methods: {
-    selectType(type) {
-      if (type !== '-' && type !== '+') {
-        throw  new Error('type is unknown')
-      }
-      this.type = type
-    }
+    this.type = type;
   }
 }
+
 </script>
 
 <style lang="scss" scoped>

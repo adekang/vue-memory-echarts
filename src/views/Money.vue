@@ -4,7 +4,7 @@
 
     <Tags/>
     <Notes/>
-    <Types/>
+    <Types :xxx="123"/>
     <NumberPad/>
 
   </Layout>
