@@ -1,6 +1,9 @@
 <template>
   <Layout>
-    编辑标签
+    <div>
+      <Icon name="arrow-left"/>
+      编辑标签
+    </div>
   </Layout>
 </template>
 
