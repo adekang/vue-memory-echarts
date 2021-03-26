@@ -2,7 +2,10 @@
 
   <Layout class-prefix="layout">
     <Tags :data-source.sync="tags" @update:value="onUpdateTags"/>
-    <Notes @update:value="onUpdateNotes"/>
+    <Notes field-name="备注"
+           placeholder="在这里输入备注"
+           @update:value="onUpdateNotes"
+    />
     <Types :value.sync="record.type"/>
     <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
 
@@ -17,7 +20,7 @@ import Types from '@/components/money/Types.vue';
 import Notes from '@/components/money/Notes.vue';
 import Tags from '@/components/money/Tags.vue';
 import {Component, Watch} from 'vue-property-decorator';
-import recordListModel from '@/models/recordListModel.ts';
+import recordListModel from '@/models/recordListModel';
 import tagListModel from '@/models/tagListModel';
 
 
@@ -31,7 +34,7 @@ export default class Money extends Vue {
   tags = tagList;
 
   // 收集相关区域的值
-  recordListModel: RecordItem[] = recordList;
+  recordList: RecordItem[] = recordList;
   record: RecordItem = {
     tags: [], notes: '', type: '-', amount: 0
   };
@@ -46,7 +49,7 @@ export default class Money extends Vue {
 
   saveRecord() {
     //深拷贝
-    const record2: RecordItem = recordList.clone(this.record);
+    const record2: RecordItem = recordListModel.clone(this.record);
     record2.createdAt = new Date();
     this.recordList.push(record2);
   }
@@ -54,7 +57,7 @@ export default class Money extends Vue {
   //  保存在localStorage
   @Watch('recordList')
   onRecordListChange() {
-    recordList.save(this.recordList);
+    recordListModel.save(this.recordList);
   }
 }
 
