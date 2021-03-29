@@ -9,14 +9,14 @@
       <FormItem field-name="标签名" placeholder="请输入标签名"/>
     </div>
     <div class="buttonWrapper">
-    <Button>删除标签</Button>
+      <Button>删除标签</Button>
     </div>
   </Layout>
 </template>
 
 <script lang='ts'>
 import Vue from 'vue';
-import {Component} from 'vue-property-decorator';
+import {Component, Prop} from 'vue-property-decorator';
 import tagListModel from '@/models/tagListModel';
 import FormItem from '@/components/money/FormItem.vue';
 import Button from '@/components/Button.vue';
@@ -25,7 +25,7 @@ import Button from '@/components/Button.vue';
   components: {Button, FormItem}
 })
 export default class EditLabel extends Vue {
-  value = '';
+  @Prop({default: ''}) value!: string;
 
   created() {
     const id = this.$route.params.id;
@@ -61,11 +61,13 @@ export default class EditLabel extends Vue {
   }
 
 }
-.formWrapper{
+
+.formWrapper {
   background-color: white;
   margin-top: 8px;
 }
-.buttonWrapper{
+
+.buttonWrapper {
   text-align: center;
   padding: 16px 0;
   margin-top: 44-16px;
