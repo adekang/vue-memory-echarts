@@ -1,3 +1,5 @@
+import createID from '@/lib/createID';
+
 const localStorageName = 'tagList';
 
 //声明数据类型
@@ -24,17 +26,17 @@ const tagListModel: TagListModel = {
   save() {
     window.localStorage.setItem(localStorageName, JSON.stringify(this.data));
   },
-  create(name) {
+  create(name:string) {
     const names = this.data.map(item => item.name);
     if (names.indexOf(name) >= 0) {
       return 'duplicated';
     }
-
-    this.data.push({id: name, name: name});
+    const id = createID().toString()
+    this.data.push({id, name: name});
     this.save();
     return 'success';
   },
-  update(id, name) {
+  update(id:string, name:string) {
     const idList = this.data.map(item => item.id);
     if (idList.indexOf(id) >= 0) {
       const names = this.data.map(item => item.name);
