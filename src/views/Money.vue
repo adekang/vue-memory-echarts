@@ -50,16 +50,13 @@ export default class Money extends Vue {
   }
 
   saveRecord() {
-    //深拷贝
-    const record2: RecordItem = recordListModel.clone(this.record);
-    record2.createdAt = new Date();
-    this.recordList.push(record2);
+    recordListModel.create(this.record);
   }
 
   //  保存在localStorage
   @Watch('recordList')
   onRecordListChange() {
-    recordListModel.save(this.recordList);
+    recordListModel.save();
   }
 }
 
@@ -72,7 +69,8 @@ export default class Money extends Vue {
   flex-direction: column;
 
 }
-.notes{
+
+.notes {
   padding: 12px 0;
 }
 </style>
