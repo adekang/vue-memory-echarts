@@ -33,7 +33,7 @@ const tagList = tagListModel.fetch();
   components: {Tags, FormItem, Types, NumberPad}
 })
 export default class Money extends Vue {
-  tags = tagList;
+  tags = window.tagList;
 
   // 收集相关区域的值
   recordList: RecordItem[] = recordList;
