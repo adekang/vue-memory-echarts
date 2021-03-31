@@ -7,7 +7,8 @@
                 @update:value="onUpdateNotes"
       />
     </div>
-    <Types :value.sync="record.type"/>
+    <Tabs :data-source="recordTypeList"
+          :value.sync="record.type"/>
     <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
   </Layout>
 </template>
@@ -15,28 +16,26 @@
 <script lang="ts">
 import Vue from 'vue';
 import NumberPad from '@/components/money/NumberPad.vue';
-import Types from '@/components/money/Types.vue';
 import FormItem from '@/components/money/FormItem.vue';
 import Tags from '@/components/money/Tags.vue';
 import {Component} from 'vue-property-decorator';
+import Tabs from '@/components/Tabs.vue';
+import recordTypeList from '@/constants/recordTypeList';
 
 @Component({
-  components: {Tags, FormItem, Types, NumberPad},
-  computed: {
-    recordList() {
-      return this.$store.state.recordList;
-    }
-  }
+  components: {Tabs, Tags, FormItem,  NumberPad}
 })
 export default class Money extends Vue {
-
-  // 收集相关区域的值
+  get recordList() {
+    return this.$store.state.recordList;
+  }
+  recordTypeList = recordTypeList
   record: RecordItem = {
     tags: [], notes: '', type: '-', amount: 0
   };
 
   created() {
-  this.$store.commit('fetchRecords')
+    this.$store.commit('fetchRecords');
   }
 
   onUpdateNotes(value: string) {
