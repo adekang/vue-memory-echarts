@@ -24,6 +24,8 @@ import Tags from '@/components/money/Tags.vue';
 import {Component} from 'vue-property-decorator';
 import store from '@/store/index2';
 
+console.log('我在vue-memory');
+
 @Component({
   components: {Tags, FormItem, Types, NumberPad},
   computed: {
