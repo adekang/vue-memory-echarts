@@ -1,5 +1,4 @@
 <template>
-
   <Layout class-prefix="layout">
     <Tags/>
     <div class="notes">
@@ -10,9 +9,7 @@
     </div>
     <Types :value.sync="record.type"/>
     <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
-
   </Layout>
-
 </template>
 
 <script lang="ts">
@@ -22,15 +19,12 @@ import Types from '@/components/money/Types.vue';
 import FormItem from '@/components/money/FormItem.vue';
 import Tags from '@/components/money/Tags.vue';
 import {Component} from 'vue-property-decorator';
-import store from '@/store/index2';
-
-console.log('我在vue-memory');
 
 @Component({
   components: {Tags, FormItem, Types, NumberPad},
   computed: {
     recordList() {
-      return store.recordList;
+      return this.$store.state.recordList;
     }
   }
 })
@@ -41,14 +35,17 @@ export default class Money extends Vue {
     tags: [], notes: '', type: '-', amount: 0
   };
 
+  created() {
+  this.$store.commit('fetchRecords')
+  }
+
   onUpdateNotes(value: string) {
     this.record.notes = value;
   }
 
   saveRecord() {
-    store.createRecord(this.record);
+    this.$store.commit('createRecord', this.record);
   }
-
 }
 </script>
 
