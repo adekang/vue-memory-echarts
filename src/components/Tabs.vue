@@ -18,7 +18,7 @@ type DataSourceItem = { text: string, value: string }
 @Component
 export default class tabs extends Vue {
   @Prop({required: true, type: Array})
-  dataSource: DataSourceItem[];
+  dataSource!: DataSourceItem[];
   @Prop(String) readonly value!: string;
   @Prop(String) classPrefix?: string;
 

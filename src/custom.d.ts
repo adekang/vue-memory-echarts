@@ -4,7 +4,7 @@ type RecordItem = {
   notes: string
   type: string
   amount: number
-  createdAt?: Date  // 类 / 构造函数
+  createdAt?: string  // 类 / 构造函数
 
 }
 // 声明数据类型
@@ -23,4 +23,10 @@ type TagListModel = {
 
 interface Window {
 
+}
+
+type RootState = {
+  recordList: RecordItem[],
+  tagList: Tag[],
+  currentTag?: Tag
 }
