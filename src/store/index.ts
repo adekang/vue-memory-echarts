@@ -3,19 +3,16 @@ import Vuex from 'vuex';
 import clone from '@/lib/clone';
 import createId from '@/lib/createID';
 import router from '@/router';
+import stringMatching = jasmine.stringMatching;
 
 Vue.use(Vuex);
-type  RootState = {
-  recordList: RecordItem[],
-  tagList: Tag[],
-  currentTag?: Tag
-}
+
 const store = new Vuex.Store({
   state: {
-    createRecordError:null,
-    createTagError: null,
     recordList: [],
     tagList: [],
+    createRecordError: null,
+    createTagError: null,
     currentTag: undefined
   } as RootState,
   mutations: {
@@ -42,7 +39,7 @@ const store = new Vuex.Store({
 
       }
     },
-    createTag(state, name: string) {
+    createTag: function (state, name: string) {
       state.createTagError = null;
       const names = state.tagList.map(item => item.name);
       if (names.indexOf(name) >= 0) {

@@ -21,9 +21,6 @@ type TagListModel = {
   save: () => void
 }
 
-interface Window {
-
-}
 
 type RootState = {
   recordList: RecordItem[],
