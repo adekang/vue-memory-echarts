@@ -15,7 +15,7 @@
         <ol>
           <li class="record" v-for="item in group.items" :key="item.id">
             <span>{{ tagString(item.tags) }}</span>
-            <span class="note">{{item.notes}}</span>
+            <span class="note">{{ item.notes }}</span>
             <span>￥{{ item.amount }} </span>
           </li>
         </ol>
@@ -33,11 +33,13 @@ import Tabs from '@/components/Tabs.vue';
 import intervalList from '@/constants/intervalList';
 import recordTypeList from '@/constants/recordTypeList';
 
+
+
 @Component({
   components: {Tabs},
 })
 export default class Statistics extends Vue {
-  tagString(tags) {
+  tagString(tags: Tag[]) {
     return tags.length === 0 ? '无' : tags.join(',');
   }
 
@@ -103,10 +105,14 @@ export default class Statistics extends Vue {
   @extend %item;
   background-color: white;
 }
-.note{
+
+.note {
   margin-right: auto;
   margin-left: 16px;
   color: #999;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
 }
 </style>
