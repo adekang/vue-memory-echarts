@@ -43,9 +43,9 @@ export default class Money extends Vue {
     tags: [], notes: '', type: '-', amount: 0, createdAt: new Date().toISOString()
   };
 
-  // created() {
-  //   this.$store.commit('fetchRecords');
-  // }
+  created() {
+    this.$store.commit('fetchRecords');
+  }
 
   saveRecord() {
     if (!this.record.tags || this.record.tags.length === 0) {

@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import clone from '@/lib/clone';
 import createId from '@/lib/createID';
 import router from '@/router';
-import stringMatching = jasmine.stringMatching;
+
 
 Vue.use(Vuex);
 
