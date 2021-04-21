@@ -7,8 +7,16 @@
                 :value.sync="record.notes"
       />
     </div>
+    <div class="createdAt">
+      <FormItem field-name="日期"
+                type="date"
+                placeholder="在这里输入日期"
+                :value.sync="record.createdAt"
+      />
+    </div>
     <Tabs :data-source="recordTypeList"
           :value.sync="record.type"/>
+
     <NumberPad :value.sync="record.amount" @submit="saveRecord"/>
   </Layout>
 </template>
@@ -32,12 +40,12 @@ export default class Money extends Vue {
 
   recordTypeList = recordTypeList;
   record: RecordItem = {
-    tags: [], notes: '', type: '-', amount: 0
+    tags: [], notes: '', type: '-', amount: 0, createdAt: new Date().toISOString()
   };
 
-  created() {
-    this.$store.commit('fetchRecords');
-  }
+  // created() {
+  //   this.$store.commit('fetchRecords');
+  // }
 
   saveRecord() {
     if (!this.record.tags || this.record.tags.length === 0) {
