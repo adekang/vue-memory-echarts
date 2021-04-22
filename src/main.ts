@@ -27,7 +27,7 @@ window.onload = function () {
 };
 
 if (document.documentElement.clientWidth > 500) {
-  // window.alert('请使用手机打开本页面，以保证浏览效果！');
+  window.alert('请使用手机打开本页面，以保证浏览效果！');
   const img = document.createElement('img');
   img.src = './web.png';
   img.style.position = 'fixed';
@@ -39,6 +39,6 @@ if (document.documentElement.clientWidth > 500) {
 
   setTimeout(function () {
     img.style.display = 'none';
-  }, 0);
+  }, 3000);
 }
 
